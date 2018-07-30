@@ -19,3 +19,6 @@ a{
 body{
     line-height: 1.5;
 }
+input{
+    font-size: inherit;
+}
