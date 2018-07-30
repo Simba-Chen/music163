@@ -8,7 +8,7 @@ var server = http.createServer(function(request, response){
         let path = parseUrl.pathname
         if(path === '/uptoken'){
             response.setHeader('Content-Type','text/html; charset=utf-8')
-            response.setHeader('Access-Content-Allow-Origin','*')
+            response.setHeader('Access-Control-Allow-Origin','*')
             let json = fs.readFileSync('./qiniu-key.json')
             json = JSON.parse(json)
             let {accessKey, secretKey} = json
@@ -20,9 +20,9 @@ var server = http.createServer(function(request, response){
             };
             var putPolicy = new qiniu.rs.PutPolicy(options);
             var uploadToken= putPolicy.uploadToken(mac);
-            response.write(`
+            response.write(`{
                 "uptoken": "${uploadToken}"
-            `)
+            }`)
             response.end()
         }else{
             response.setHeader('Content-Type','text/html; charset=utf-8')
