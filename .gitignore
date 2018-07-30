@@ -1,2 +1,2 @@
 /node_modules
-qiniu-key.json
+./src/qiniu-key.json
