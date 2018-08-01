@@ -21,7 +21,7 @@
     padding: 10px;
 }
 .newSong.active{
-    background-color: #d4d4d4;
+    background-color: red;
 }
 #songList-container{
     flex-grow: 1;
