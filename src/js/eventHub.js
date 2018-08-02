@@ -1,6 +1,6 @@
 window.eventHub = {
     events: {
-
+        
     },
     emit(eventName, data){//触发triggle 发布
         for(let key in this.events){

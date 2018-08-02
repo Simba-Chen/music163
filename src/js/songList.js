@@ -9,7 +9,7 @@
             let {songs} = data
             let liList = songs.map((song)=>{
                 let li = $('<li></li>')
-                li.text(song.name)
+                li.text(song.name).attr('data-song-id',song.id)
                 return li
             })
             $(this.el).find('ul').empty()
@@ -55,6 +55,16 @@
         bindEvents(){
             $(this.view.el).on('click','li',(e)=>{
                 this.view.activeItem(e.currentTarget)
+                let songId = e.currentTarget.getAttribute('data-song-id')
+                let songListData
+                let songs = this.model.data.songs
+                for(let i=0;i<songs.length;i++){
+                    if(songs[i].id === songId){
+                        songListData = songs[i]
+                        break
+                    }
+                }
+                window.eventHub.emit('select',JSON.parse(JSON.stringify(songListData)))
             })
         },
         bindEventHub(){
