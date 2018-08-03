@@ -21,7 +21,7 @@
     padding: 10px;
 }
 .newSong.active{
-    background-color: red;
+    background-color: #999;
 }
 #songList-container{
     flex-grow: 1;
@@ -38,30 +38,47 @@
 }
 #uploadArea{
     text-align: center;
-    border-radius: 10px;
-    border: 1px dashed #333;
+    background: linear-gradient(to top, gray, white);
 }
 #uploadBtn{
-    padding: 25px;
+    padding: 15px;
     cursor: pointer;  /*鼠标放上去后变成鼠标手*/
 }
 
 /*main*/
 .page>main{
-    padding: 20px;
-    background-color: #d4d4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-left: 1px solid black;
 }
-
-.page>main>.form>.row{
+.page>main>.box{
+    width: 400px;
+    border-radius: 10px;
+    border: 1px dashed black;
+    padding: 40px;
+    background-color: #d4d4d4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.page>main>.box>.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+.page>main>.box>.form>.row{
     margin: 10px 0;
 }
-.page>main>.form>.row input[type=text]{
+.page>main>.box>.form>.row input[type=text]{
      
     padding: 2px 6px;
     border-radius: 4px;
     border: 1px solid #333;
 }
-.page>main>.form input[type=submit]{
+.page>main>.box>.form input[type=submit]{
     padding: 5px 10px;
     border-radius: 4px;
     border: 1px solid #333;

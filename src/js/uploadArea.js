@@ -1,8 +1,14 @@
 {
     let view = {
         el: `#uploadArea`,
+        template:`
+        <div id="uploadBtn">⊕添加歌曲</div>
+        `,
         find(selector){
             return $(this.el).find(selector)[0]    
+        },
+        render(data){
+            $(this.el).html(this.template)
         }
     }
     let model = {}
@@ -10,6 +16,7 @@
         init(view,model){
             this.view = view
             this.model = model
+            this.view.render()
             this.initQiniu()   
         },
         initQiniu(){
@@ -53,7 +60,7 @@
                             var domain = up.getOption('domain');
                             var response = JSON.parse(info.response);
                             var sourceLink = 'http://'+domain +'/'+ encodeURIComponent(response.key); //获取上传成功后的文件的Url
-                            window.eventHub.emit('upload',{
+                            window.eventHub.emit('new',{
                                 url: sourceLink,
                                 name: response.key
                             })

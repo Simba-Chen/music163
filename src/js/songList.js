@@ -46,6 +46,7 @@
             this.view.render(this.model.data)
             this.getAllsongs()
             this.bindEvents()
+            this.bindEventHub()
         },
         getAllsongs(){
             return this.model.find().then(()=>{
@@ -68,12 +69,12 @@
             })
         },
         bindEventHub(){
-            window.eventHub.on('upload',()=>{
-                this.view.clearActive()
-            })
             window.eventHub.on('create',(songData)=>{
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)
+            })
+            window.eventHub.on('new',()=>{
+                this.view.clearActive()
             })
         }
     }

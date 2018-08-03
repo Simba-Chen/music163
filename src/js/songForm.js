@@ -1,7 +1,7 @@
 {
     let view = {
-        el: '.page > main',
-        template:`<h1>新建歌曲</h1>
+        el: '.page > main > .box',
+        template:`
         <form class="form">
             <div class="row">
                 <label>
@@ -27,6 +27,11 @@
                 html = html.replace(`__${string}__`,data[string] || '')
             })
             $(this.el).html(html)
+            if(data.name){
+                $(this.el).prepend('<h1>编辑歌曲</h1>')
+            }else{
+                $(this.el).prepend('<h1>新建歌曲</h1>')
+            }
         },
         reset(){
             this.render({})
@@ -64,14 +69,30 @@
             this.model = model
             this.bindEvents()
             this.view.render(this.model.data)
-            window.eventHub.on('upload',(data)=>{
-                this.model.data = data
-                this.view.render(this.model.data)
-            })
             window.eventHub.on('select',(data)=>{
                 this.model.data = data
                 this.view.render(this.model.data)
             })
+            window.eventHub.on('new',(data)=>{
+                data = data || {
+                    name: '',
+                    url: '',
+                    id: '',
+                    singer: ''
+                }
+                if(this.model.data.id){
+                    this.model.data = {
+                        name: '',
+                        url: '',
+                        id: '',
+                        singer: ''
+                    }
+                }else{
+                    Object.assign(this.model.data,data)
+                }
+                this.model.data = data
+                this.view.render(this.model.data)
+            })   
         },
         bindEvents(){
             $(this.view.el).on('submit','form',(e)=>{
