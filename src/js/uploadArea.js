@@ -2,7 +2,7 @@
     let view = {
         el: `#uploadArea`,
         template:`
-        <div id="uploadBtn">⊕添加歌曲</div>
+        <div id="uploadBtn">⊕新建歌曲</div>
         `,
         find(selector){
             return $(this.el).find(selector)[0]    
@@ -46,7 +46,7 @@
                             // 每个文件上传前,处理相关的事情
                     },
                     'UploadProgress': function(up, file) {
-                            // 每个文件上传时,处理相关的事情
+                            $('#loading').css('visibility','visible')
                     },
                     'FileUploaded': function(up, file, info) {
                             // 每个文件上传成功后,处理相关的事情
@@ -56,7 +56,7 @@
                             //    "key": "gogopher.jpg"
                             //  }
                             // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-            
+                            $('#loading').css('visibility','hidden')
                             var domain = up.getOption('domain');
                             var response = JSON.parse(info.response);
                             var sourceLink = 'http://'+domain +'/'+ encodeURIComponent(response.key); //获取上传成功后的文件的Url
