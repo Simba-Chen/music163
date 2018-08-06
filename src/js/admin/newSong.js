@@ -2,7 +2,7 @@
     let view = {
         el: '.newSong',
         template:`
-            歌曲列表
+            <h3>歌曲列表</h3>
         `,
         render(data){
             $(this.el).html(this.template)
@@ -14,24 +14,24 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
-            this.active()
-            window.eventHub.on('new',()=>{
-                this.active()
-            })  
-            window.eventHub.on('select',(data)=>{
-                this.deactive()
-            })
+            // this.active()
+            // window.eventHub.on('new',()=>{
+            //     this.active()
+            // })  
+            // window.eventHub.on('select',(data)=>{
+            //     this.deactive()
+            // })
             $(this.view.el).on('click',()=>{
                 window.eventHub.emit('new')
             })
         },
-        active(){
-            $(this.view.el).addClass('active')
+        // active(){
+        //     $(this.view.el).addClass('active')
             
-        },
-        deactive(){
-            $(this.view.el).removeClass('active')
-        }
+        // },
+        // deactive(){
+        //     $(this.view.el).removeClass('active')
+        // }
     }
     controller.init(view,model)
 }

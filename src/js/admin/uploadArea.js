@@ -2,7 +2,7 @@
     let view = {
         el: `#uploadArea`,
         template:`
-        <div id="uploadBtn">⊕新建歌曲</div>
+        <div id="uploadBtn"><b>添加或拖曳歌曲</b></div>
         `,
         find(selector){
             return $(this.el).find(selector)[0]    

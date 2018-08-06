@@ -1,14 +1,36 @@
+@function px( $px ){ 
+    @return $px/$designWidth + rem; 
+}
+$designWidth : 1366;
+/*page*/
+.page{
+    background-image: url(../../images/mountain.jpg);
+    background-position: center center;
+    background-size: cover;
+}
 /*layout*/
 .page{
-    height: 100vh;
-    width: 100vw;
+    height: 1vh;
+    width: 1rem;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .page>aside{
-    width: 300px;
+    width: px(940);
+    margin-bottom: px(20);
+    box-shadow: 0 2px 10px black;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 .page>main{
-    flex-grow: 1;
+    width: px(940);
+    margin-bottom: px(20);
+    border-radius: 5px;
+}
+.page>#uploadArea{
+    width: px(940);
 }
 
 /*aside*/
@@ -18,30 +40,32 @@
 }
 .newSong{
     text-align: center;
-    padding: 10px;
+    background-color: rgba(194,12,12,0.8);
 }
-.newSong.active{
-    background-color: rgb(194,12,12);
-}
+/* .newSong.active{
+    background-color: rgba(194,12,12,0.8);
+} */
 #songList-container{
     flex-grow: 1;
 }
 .songList{
     text-align: left;
-    border-top: 1px solid #999;
+    border-bottom: 1px solid #999
 }
 .songList>li{
-    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    padding: px(5) 0;
 }
 .songList>li.active{
-    background-color: rgb(194,12,12);
+    background-color: rgba(194,12,12,0.8);
 }
 #uploadArea{
     text-align: center;
-    background: linear-gradient(to top, rgb(194,12,12), white);
+    border: 1px dashed black;
+    border-radius: 5px;
 }
 #uploadBtn{
-    padding: 15px;
+    padding: px(25);
     cursor: pointer;  /*鼠标放上去后变成鼠标手*/
 }
 
@@ -50,37 +74,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(194,12,12);
-    border-left: 1px solid black;
+    box-shadow: 0 2px 10px black;
 }
 .page>main>.box{
-    width: 400px;
-    border-radius: 10px;
-    border: 1px dashed black;
-    padding: 40px;
-    background-color: #999;
+    padding: px(20);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    box-shadow: 3px 3px 5px black;
+    align-items: center;    
 }
 .page>main>.box>.form{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    margin-top: 15px;
+    justify-content: center;
+    margin-top: px(15);
 }
 .page>main>.box>.form>.row{
-    margin: 10px 0;
+    margin: px(10) px(10);
 }
 .page>main>.box>.form>.row input[type=text]{
-     
-    padding: 2px 6px;
+    padding: px(2) px(6);
     border-radius: 4px;
     border: 1px solid #333;
 }
 .page>main>.box>.form input[type=submit]{
-    padding: 5px 10px;
+    align-items: center;
+    padding: px(2) px(20);
     border-radius: 4px;
     border: 1px solid #333;
 }

@@ -18,7 +18,7 @@
                 外链：<input name="url" type="text" value="__url__">
                 </label>           
             </div>
-            <input type="submit">
+            <input type="submit" value= "SAVE">
         </form>`,
         render(data = {}){
             let placeholders = ['name','singer','url','id']
@@ -28,9 +28,9 @@
             })
             $(this.el).html(html)
             if(data.name){
-                $(this.el).prepend('<h1>编辑歌曲</h1>')
+                $(this.el).prepend('<h3>编辑歌曲</h3>')
             }else{
-                $(this.el).prepend('<h1>新建歌曲</h1>')
+                $(this.el).prepend('<h3>新建歌曲</h3>')
             }
         },
         reset(){
