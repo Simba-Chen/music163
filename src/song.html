@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>歌曲播放页</title>
+    <link rel="stylesheet" href="./style/song.css">
+</head>
+<body>
+    <div class="page" id="app">
+        <audio src="#"></audio>
+        <div class="disc-container">
+          <img class="pointer" src="#" alt="">
+          <div class="disc">
+            <div class="icon-wrapper">
+                <svg class="icon icon-play">
+                    <use xlink:href="#icon-play"></use>
+                </svg>
+              <svg class="icon icon-pause">
+                  <use xlink:href="#icon-pause"></use>
+              </svg>
+            </div>
+            <img class="ring" src="./image/dist.png" alt="">
+            <img class="light" src="./image/dist-light.png" alt="">
+            <img class="cover" src="" alt="">
+          </div>
+        </div>
+        <div class="song-description">
+          <h1>歌名</h1>
+          <div class="lyric">
+            <div class="lines">
+    
+            </div>
+          </div>
+        </div>
+        <div class="links">
+          <a href="#">打开</a>
+          <a class="main" href="#">下载</a>
+        </div>
+    </div>
+    <script src="//at.alicdn.com/t/font_777749_psdn67boo5n.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="./js/av-init.js"></script>
+    <script src="./js/eventHub.js"></script>
+    <script src="./js/song/song.js"></script> 
+</body>
+</html>

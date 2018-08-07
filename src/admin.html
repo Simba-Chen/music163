@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>歌曲管理页</title>
     <script>
         let pageWidth = window.innerWidth
         document.write(`<style>html{font-size: ${pageWidth}px}</style>`)
@@ -15,13 +15,14 @@
 <body>
     <div class="page">
         <main>
-            <div class="box"></div> 
+            <div class="box"></div>
+            <div id="uploadArea"></div> 
         </main>
         <aside>
             <div class="newSong"></div>
             <div id="songList-container"></div>
         </aside>
-        <div id="uploadArea"></div>   
+           
     </div>
     <div id="loading"></div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
