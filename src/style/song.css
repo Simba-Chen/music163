@@ -47,7 +47,7 @@
 .disc-container .pointer{
     width: 24vw; 
     position: absolute; 
-    left: 45vw; 
+    left: 45vw;
 }
 .disc-container .disc{
     display: flex; 

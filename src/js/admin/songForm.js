@@ -23,10 +23,12 @@
                 封面：<input name="cover" type="text" value="__cover__">
                 </label>           
             </div>
+            <label for="lyrics">歌词：</label>
+            <textarea id="lyrics" name="lyrics" cols="28" rows="3">__lyrics__</textarea>
             <input type="submit" value= "SAVE">
         </form>`,
         render(data = {}){
-            let placeholders = ['name','singer','url','id','cover']
+            let placeholders = ['name','singer','url','id','cover','lyrics']
             let html = this.template
             placeholders.map((string)=>{
                 html = html.replace(`__${string}__`,data[string] || '')
@@ -48,7 +50,8 @@
             singer: '',
             url: '',
             id: '',
-            cover: ''
+            cover: '',
+            lyrics: ''
         },
         create(data){
             var Song = AV.Object.extend('Song');
@@ -57,12 +60,13 @@
             song.set('singer',data.singer)
             song.set('url',data.url)
             song.set('cover',data.cover)
+            song.set('lyrics',data.lyrics)
             return song.save().then((newSong)=>{
-                let {id,attributes} = newSong
-                this.data.id = id  
-                this.data.name = attributes.name   
-                this.data.singer = attributes.name
-                this.data.url = attributes.name
+                this.data.id = newSong.id  
+                this.data.name = newSong.name   
+                this.data.singer = newSong.singer
+                this.data.url = newSong.url
+                this.data.lyrics = newSong.lyrics
                 // 不能将data内部属性重新赋值,只能直接修改data,将原来的data抛弃掉  永远不要使用旧内存的data
                 // this.data = {id,...attributes} 
             },(error)=>{
@@ -75,6 +79,7 @@
             song.set('singer', data.singer)
             song.set('url', data.url)
             song.set('cover',data.cover)
+            song.set('lyrics',data.lyrics)
             return song.save().then((response)=>{
                 Object.assign(this.data,data)
                 return response
@@ -96,14 +101,18 @@
                     name: '',
                     url: '',
                     id: '',
-                    singer: ''
+                    singer: '',
+                    cover: '',
+                    lyrics: ''
                 }
                 if(this.model.data.id){
                     this.model.data = {
                         name: '',
                         url: '',
                         id: '',
-                        singer: ''
+                        singer: '',
+                        cover: '',
+                        lyrics: ''
                     }
                 }else{
                     Object.assign(this.model.data,data)
@@ -113,7 +122,7 @@
             })   
         },
         create(){
-            let needs = 'name singer url cover'.split(' ')
+            let needs = 'name singer url cover lyrics'.split(' ')
             let data = {}
             needs.map((string)=>{
                 data[string] = $(this.view.el).find(`[name="${string}"]`).val()
@@ -121,13 +130,11 @@
             this.model.create(data)
             .then(()=>{
                 this.view.reset()
-                let string = JSON.stringify(this.model.data)
-                let object = JSON.parse(string)
-                window.eventHub.emit('create',object)
+                window.eventHub.emit('create',JSON.parse(JSON.stringify(this.model.data)))
             })
         },
         update(){
-            let needs = 'name singer url cover'.split(' ')
+            let needs = 'name singer url cover lyrics'.split(' ')
             let data = {}
             needs.map((string)=>{
                 data[string] = $(this.view.el).find(`[name="${string}"]`).val()
