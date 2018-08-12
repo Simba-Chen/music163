@@ -34,7 +34,7 @@
     }
     let model = {
         data: {
-            songs:{}
+            songs:[]
         },
         find(){
             var query = new AV.Query('Song');

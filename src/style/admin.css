@@ -16,7 +16,7 @@
 }
 
 .page > aside {
-  width: 0.25622rem;
+  width: 0.14641rem;
   height: 100%;
   border: 1px solid black; 
   order: -1;}
@@ -68,7 +68,7 @@
 #uploadBtn {
   height: 100%;
   width: 100%;
-  padding: 0.0183rem;
+  /* padding: 0.0183rem; */
   cursor: pointer;
   display: flex;
   justify-content: center;
