@@ -24,7 +24,7 @@
                 </label>           
             </div>
             <label for="lyrics">歌词：</label>
-            <textarea id="lyrics" name="lyrics" cols="40" rows="8">__lyrics__</textarea>
+            <textarea id="lyrics" name="lyrics" cols="40" rows="4">__lyrics__</textarea>
             <input type="submit" value= "SAVE">
         </form>`,
         render(data = {}){

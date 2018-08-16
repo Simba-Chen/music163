@@ -18,7 +18,8 @@
 .page > aside {
   width: 0.14641rem;
   height: 100%;
-  border: 1px solid black; 
+  border-right: 1px solid black;
+  box-shadow: 0 1px 2px black; 
   order: -1;}
 
 .page > main {
@@ -29,8 +30,8 @@
 
 .page > main #uploadArea {
   width: 80%;
-  height: 40%;
-  box-shadow: 3px 3px 5px black;
+  height: 20%;
+  box-shadow: 1px 1px 3px black;
 }
 
 /*aside*/
@@ -85,7 +86,7 @@
   width: 50%;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 3px 3px 5px black;
+  box-shadow: 1px 1px 3px black;
   padding: 0.01464rem;
   margin: 0.0183rem;
   display: flex;
